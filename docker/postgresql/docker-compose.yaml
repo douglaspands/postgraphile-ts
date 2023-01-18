@@ -17,13 +17,17 @@ services:
             - postgresql-volume:/var/lib/postgresql/data
         environment:
             POSTGRES_HOST_AUTH_METHOD: trust
-            # POSTGRES_USER: postgres
-            # POSTGRES_PASSWORD: docker
-            # POSTGRES_DB: postgraphile
         ports:
             - 5432:5432
+        networks:
+            - local-network
         env_file:
             - ../../.env
 
 volumes:
     postgresql-volume:
+        name: postgresql-volume
+
+networks:
+    local-network:
+        name: local-network

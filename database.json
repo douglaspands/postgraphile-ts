@@ -1,5 +1,5 @@
 {
-    "pg": {
+    "dev": {
         "driver": "pg",
         "user": {
             "ENV": "POSTGRES_USER"
@@ -13,8 +13,10 @@
         "database": {
             "ENV": "POSTGRES_NAME"
         },
-        "port": "POSTGRES_PORT",
-        "ssl": "true",
+        "port": {
+            "ENV": "POSTGRES_PORT"
+        },
+        "ssl": false,
         "schema": {
             "ENV": "POSTGRES_SCHEMA"
         }

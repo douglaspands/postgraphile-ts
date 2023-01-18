@@ -1,2 +1,4 @@
 dist/
 scripts/
+migrations/
+node_modules/
