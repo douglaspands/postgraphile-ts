@@ -8,7 +8,8 @@
     "build:clean": "tsc --build --clean",
     "build:watch": "tsc --watch --sourceMap",
     "rm:dist": "node scripts/clean.js",
-    "build:dev": "run-s build:clean rm:dist build:watch",
+    "lint": "eslint src/",
+    "build:dev": "run-s lint build:clean rm:dist build:watch",
     "server:start": "nodemon scripts/server.js",
     "start": "run-p build:dev server:start"
   },
@@ -29,6 +30,9 @@
   "devDependencies": {
     "@types/express": "^4.17.15",
     "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.48.2",
+    "@typescript-eslint/parser": "^5.48.2",
+    "eslint": "^8.32.0",
     "jest": "^29.3.1",
     "nodemon": "^2.0.20",
     "npm-run-all": "^4.1.5",
