@@ -5,9 +5,10 @@
     "scripts": {
         "build": "run-s rm:dist lint tsc tsc:alias",
         "build:watch": "npm-run-all build --parallel tsc:watch tsc:alias:watch",
-        "format": "prettier --write \"./src/**/*.+(ts|json)\"",
+        "format": "run-s lint:fix prettier",
         "lint": "eslint './src/**/*.{ts,json}'",
         "lint:fix": "eslint --fix './src/**/*.{ts,json}'",
+        "prettier": "prettier --write \"./src/**/*.+(ts|json)\"",
         "rm:dist": "node scripts/clean.js",
         "start:ts": "nodemon ./scripts/server.ts",
         "start:js": "node ./scripts/server.js",
