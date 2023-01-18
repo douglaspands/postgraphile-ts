@@ -21,7 +21,7 @@
         "tsc:watch": "tsc --project ./tsconfig-build.json --watch --sourceMap",
         "postgresql:start": "docker compose -f ./docker/postgresql/docker-compose.yaml up -d",
         "postgresql:stop": "docker compose -f ./docker/postgresql/docker-compose.yaml stop",
-        "postgresql:logs": "docker compose -f ./docker/postgresql/docker-compose.yaml logs --follow",
+        "postgresql:logs": "docker logs --follow postgresql-container",
         "postgresql:rm": "docker compose -f ./docker/postgresql/docker-compose.yaml down -v"
     },
     "repository": {
