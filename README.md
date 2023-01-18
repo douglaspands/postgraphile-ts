@@ -38,6 +38,7 @@ POSTGRES_PASSWORD=docker
 POSTGRES_DB=postgraphile
 POSTGRES_HOST=localhost
 POSTGRES_SCHEMA=postgraphile
+POSTGRES_PORT=5432
 ```
 
 -   [Documentação](https://db-migrate.readthedocs.io/)

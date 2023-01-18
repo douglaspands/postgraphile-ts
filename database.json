@@ -13,7 +13,7 @@
         "database": {
             "ENV": "POSTGRES_NAME"
         },
-        "port": "5432",
+        "port": "POSTGRES_PORT",
         "ssl": "true",
         "schema": {
             "ENV": "POSTGRES_SCHEMA"
