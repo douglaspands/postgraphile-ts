@@ -1,6 +1,6 @@
 import express, { Express } from 'express';
-import middleware from '@app/middlewares';
-import router from '@app/routers';
+import middleware from '@app/register/middleware';
+import router from '@app/register/router';
 
 async function createApp(): Promise<Express> {
     const app = express();

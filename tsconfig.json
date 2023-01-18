@@ -17,6 +17,6 @@
         "skipLibCheck": true,
         "noUnusedLocals": true
     },
-    "include": ["src/**/*", "tests/**/*", "scripts/**/*.ts"],
+    "include": ["src/**/*", "tests/**/*", "scripts/**/*"],
     "exclude": ["node_modules"]
 }

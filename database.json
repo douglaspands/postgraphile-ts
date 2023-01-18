@@ -1,0 +1,22 @@
+{
+    "pg": {
+        "driver": "pg",
+        "user": {
+            "ENV": "POSTGRES_USER"
+        },
+        "password": {
+            "ENV": "POSTGRES_PASSWORD"
+        },
+        "host": {
+            "ENV": "POSTGRES_HOST"
+        },
+        "database": {
+            "ENV": "POSTGRES_NAME"
+        },
+        "port": "5432",
+        "ssl": "true",
+        "schema": {
+            "ENV": "POSTGRES_SCHEMA"
+        }
+    }
+}
