@@ -1,4 +1,4 @@
-const server = require("../dist/web").default;
+import server from "../src/web";
 const port = 3000;
 
 server.then(app => {

@@ -1,5 +1,8 @@
 {
-    "watch": ["dist/**/*"],
-    "ext": "js",
-    "delay": 2500
+    "watch": ["src"],
+    "ext": "ts,json",
+    "ignore": ["src/**/*.spec.ts"],
+    "execMap": {
+        "ts": "ts-node -r tsconfig-paths/register"
+    }
 }
