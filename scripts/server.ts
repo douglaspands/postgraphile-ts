@@ -1,7 +1,7 @@
-import server from "../src/web";
+import web from "@app/web";
 const port = 3000;
 
-server.then(app => {
+web.then(app => {
     app.listen(port, ()=> {
         console.log(`App listening on port ${port}`)
     })
