@@ -2,14 +2,15 @@
   "name": "postgraphile-ts",
   "version": "1.0.0",
   "description": "Projeto de API GraphQL utilizando a combinação do Typescript, Postgraphile e PostgreSQL.",
-  "main": "dist/index.js",
   "scripts": {
     "test": "jest",
-    "build": "tsc --build",
-    "build:watch": "tsc --build --watch",
-    "build:debug": "tsc --build --sourceMap",
-    "build:watch:debug": "tsc --build --watch --sourceMap",
-    "build:clean": "tsc --build --clean"
+    "build": "tsc",
+    "build:clean": "tsc --build --clean",
+    "build:watch": "tsc --watch --sourceMap",
+    "rm:dist": "node scripts/clean.js",
+    "build:dev": "run-s build:clean rm:dist build:watch",
+    "server:start": "nodemon scripts/server.js",
+    "start": "run-p build:dev server:start"
   },
   "repository": {
     "type": "git",
@@ -26,11 +27,17 @@
   },
   "homepage": "https://github.com/douglaspands/postgraphile-ts#readme",
   "devDependencies": {
+    "@types/express": "^4.17.15",
+    "@types/node": "^18.11.18",
     "jest": "^29.3.1",
+    "nodemon": "^2.0.20",
+    "npm-run-all": "^4.1.5",
     "typescript": "^4.9.4"
   },
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "http-status-codes": "^2.2.0",
     "postgraphile": "^4.13.0"
   }
 }
