@@ -10,4 +10,4 @@ router.get('/v1/ping', async (_, res: Response): Promise<void> => {
     logger.info('Ping called!');
 });
 
-export default router;
+export default { router };
