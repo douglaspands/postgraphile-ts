@@ -5,7 +5,8 @@
         "module": "commonjs",
         "baseUrl": "./src",
         "paths": {
-            "@app/*": ["*"]
+            "@app/*": ["*"],
+            "@config": ["./config"]
         },
         "resolveJsonModule": true,
         "outDir": "./dist",

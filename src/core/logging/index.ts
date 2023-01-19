@@ -1,8 +1,9 @@
 import { createLogger, format, transports, Logger } from 'winston';
+import config from '@config';
 
 function getLogger(name: string): Logger {
     return createLogger({
-        level: process.env.LOG_LEVEL ? process.env.LOG_LEVEL.toLowerCase() : 'info',
+        level: config.LOG_LEVEL,
         format: format.combine(
             format.errors({ stack: true }),
             format.colorize(),
