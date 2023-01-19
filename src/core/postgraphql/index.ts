@@ -3,7 +3,7 @@ import pgSimplifyInflector from '@graphile-contrib/pg-simplify-inflector';
 import { PostGraphileOptions } from 'postgraphile';
 import { IncomingMessage } from 'http';
 
-const logger = logging.getLogger('postgraphileCore');
+const logger = logging.getLogger('postGraphQLCore');
 type mixed = string | number | boolean | undefined | null;
 
 async function pgSettings(req: IncomingMessage): Promise<{ [key: string]: mixed }> {
