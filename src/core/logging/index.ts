@@ -4,6 +4,7 @@ function getLogger(name: string): Logger {
     return createLogger({
         level: process.env.LOG_LEVEL ? process.env.LOG_LEVEL.toLowerCase() : 'info',
         format: format.combine(
+            format.errors({ stack: true }),
             format.colorize(),
             format.label({ label: name }),
             format.timestamp(),

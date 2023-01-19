@@ -8,7 +8,7 @@ function criarMigracao(name: string): void {
         `node ./node_modules/db-migrate/bin/db-migrate create ${name} --sql-file`,
         (error, stdout, stderr) => {
             if (error) {
-                logger.error(`\n${error.message}`);
+                logger.error(`\n${error.message}`, error);
             } else if (stderr) {
                 logger.error(`\n${stderr}`);
             } else {
@@ -23,7 +23,7 @@ function atualizarBancoDados(): void {
         `node ./node_modules/db-migrate/bin/db-migrate up`,
         (error, stdout, stderr) => {
             if (error) {
-                logger.error(`\n${error.message}`);
+                logger.error(`\n${error.message}`, error);
             } else if (stderr) {
                 logger.error(`\n${stderr}`);
             } else {
