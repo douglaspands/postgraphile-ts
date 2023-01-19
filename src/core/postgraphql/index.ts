@@ -2,6 +2,7 @@ import logging from '@app/core/logging';
 import pgSimplifyInflector from '@graphile-contrib/pg-simplify-inflector';
 import { PostGraphileOptions } from 'postgraphile';
 import { IncomingMessage } from 'http';
+import ConnectionFilterPlugin from 'postgraphile-plugin-connection-filter';
 
 const logger = logging.getLogger('postGraphQLCore');
 type mixed = string | number | boolean | undefined | null;
@@ -23,7 +24,7 @@ class PostGraphQLOptionsBase {
     dynamicJson = true;
     setofFunctionsContainNulls = false;
     ignoreRBAC = false;
-    appendPlugins = [pgSimplifyInflector];
+    appendPlugins = [pgSimplifyInflector, ConnectionFilterPlugin];
     enableQueryBatching = true;
     pgSettings = pgSettings;
     get legacyRelations(): 'omit' {

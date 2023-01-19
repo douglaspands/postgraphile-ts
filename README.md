@@ -2,6 +2,24 @@
 
 Projeto de API GraphQL utilizando a combinação do Typescript, Postgraphile e PostgreSQL.
 
+## Dependencias
+
+-   Node `LTS`;
+-   PostgreSQL `Latest`;
+
+## Configurações
+
+Criar arquivo `.env` com:
+
+```.env
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=docker
+POSTGRES_DB=postgraphile
+POSTGRES_HOST=localhost
+POSTGRES_SCHEMA=postgraphile
+POSTGRES_PORT=5432
+```
+
 ## CLI
 
 Comandos de apoio a aplicação.
@@ -30,15 +48,8 @@ Foi estabelecido que as migrates serão em SQL para facilitar a execução e a c
 node ./node_modules/db-migrate/bin/db-migrate create primeiraMigration --sql-file
 ```
 
-Criar arquivo `.env` com:
+## Anotações
 
-```env
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=docker
-POSTGRES_DB=postgraphile
-POSTGRES_HOST=localhost
-POSTGRES_SCHEMA=postgraphile
-POSTGRES_PORT=5432
-```
-
--   [Documentação](https://db-migrate.readthedocs.io/)
+-   [Postgraphile Creating Roles](https://www.graphile.org/postgraphile/required-knowledge/#creating-roles)
+-   [Postgraphile Security](https://www.graphile.org/postgraphile/security/)
+-   [DB-Migrate](https://db-migrate.readthedocs.io/)
