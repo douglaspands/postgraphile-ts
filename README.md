@@ -2,6 +2,11 @@
 
 Projeto de API GraphQL utilizando a combinação do Typescript, Postgraphile e PostgreSQL.
 
+## Motivação
+
+Tudo na vida precisa de motivação e vejo muito potencial na biblioteca Postgraphile, como acelerador de novas implementações e contribuindo para a funcionalidade do negocio entrar em produção de forma mais rapida e descomplicada.
+Estou desenvolvendo um backend completo e organizado para agilizar novos negocios, e deixarei publico como referencia.
+
 ## Dependencias
 
 -   Node `LTS`;
