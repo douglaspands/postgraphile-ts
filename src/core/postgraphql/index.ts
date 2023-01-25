@@ -1,8 +1,9 @@
-import logging from '@app/core/logging';
+import logging from '@core/logging';
 import pgSimplifyInflector from '@graphile-contrib/pg-simplify-inflector';
 import { PostGraphileOptions } from 'postgraphile';
 import { IncomingMessage } from 'http';
 import ConnectionFilterPlugin from 'postgraphile-plugin-connection-filter';
+import config from '@config';
 
 const logger = logging.getLogger('postGraphQLCore');
 type mixed = string | number | boolean | undefined | null;
@@ -10,7 +11,10 @@ type mixed = string | number | boolean | undefined | null;
 async function pgSettings(req: IncomingMessage): Promise<{ [key: string]: mixed }> {
     /* TODO */
     logger.debug(JSON.stringify(req));
-    return {};
+    return {
+        jwtSecret: config.JWT_SECRET,
+        jwtPgTypeIdentifier: config.JWT_TOKEN_IDENTIFIER,
+    };
 }
 
 async function allowExplain(req: IncomingMessage): Promise<boolean> {
@@ -38,6 +42,7 @@ class PostGraphQLOptionsDevelopment extends PostGraphQLOptionsBase {
     exportGqlSchemaPath = 'schema.graphql';
     graphiql = true;
     enhanceGraphiql = true;
+    ownerConnectionString = config.PG_ROOT_URL;
     allowExplain = allowExplain;
     get showErrorStack(): 'json' {
         return 'json';

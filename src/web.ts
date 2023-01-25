@@ -1,5 +1,5 @@
 import { Express } from 'express';
-import web from '@app/core/web';
+import web from '@core/web';
 
 export default new Promise<Express>((resolve, reject) => {
     web.createApp()

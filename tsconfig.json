@@ -6,7 +6,12 @@
         "baseUrl": "./src",
         "paths": {
             "@app/*": ["*"],
-            "@config": ["./config"]
+            "@config": ["./config"],
+            "@service/*": ["./services/*"],
+            "@controller/*": ["./controllers/*"],
+            "@command/*": ["./commands/*"],
+            "@core/*": ["./core/*"],
+            "@register/*": ["./register/*"]
         },
         "resolveJsonModule": true,
         "outDir": "./dist",

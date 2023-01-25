@@ -1,6 +1,6 @@
 import figlet from 'figlet';
 import { Command } from 'commander';
-import command from '@app/register/command';
+import command from '@register/command';
 import config from '@config';
 
 console.log(figlet.textSync(config.APP_NAME));
