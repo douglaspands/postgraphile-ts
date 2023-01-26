@@ -10,14 +10,18 @@ import jwt from '@core/jwt';
 const logger = logging.getLogger('postGraphQLCore');
 
 async function pgSettings(req: IncomingMessage): Promise<DictType> {
-    let res = { role: null };
-    if (req.headers.authorization) {
-        const token = req.headers.authorization.replace('Bearer ', '');
-        const jwt_payload = await jwt.verify(token, config.JWT_SECRET);
-        res = Object.assign({}, res, jwt_payload);
-        return res;
-    } else {
-        return {};
+    try {
+        if (req.headers.authorization) {
+            const token = req.headers.authorization.replace('Bearer ', '');
+            return await jwt.verify(token, config.JWT_SECRET);
+        } else {
+            throw new Error(
+                'Header authentication mau formado. É esperado a sintaxe "Bearer accessToken".'
+            );
+        }
+    } catch (error) {
+        e.status = 401;
+        throw e;
     }
 }
 
