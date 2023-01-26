@@ -12,49 +12,94 @@ Estou desenvolvendo um backend completo e organizado para agilizar novos negocio
 -   Node `LTS`;
 -   PostgreSQL `Latest`;
 
-## Configurações
+## Configurações Iniciais
+
+### Variaveis de ambiente
 
 Criar arquivo `.env` com:
 
-```.env
+```sh
+# PostgreSQL
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=docker
-POSTGRES_DB=postgraphile
+POSTGRES_DB=postgres
 POSTGRES_HOST=localhost
-POSTGRES_SCHEMA=postgraphile
+POSTGRES_SCHEMA=public
 POSTGRES_PORT=5432
+
+# Graphile
+GRAPHILE_DB=postgraphile
+GRAPHILE_USER=appuser
+GRAPHILE_PASSWORD=7mF0uXv82qy8
+GRAPHILE_SCHEMA=app_private
+GRAPHILE_ENV=development
+
+# JWT
+JWT_TOKEN_IDENTIFIER=app_public.jwt_token
+JWT_SECRET=Q4hBq9c4h18c
+
+# DB String Connection
+ROOT_DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
+DATABASE_URL=postgres://${GRAPHILE_USER}:${GRAPHILE_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${GRAPHILE_DB}
+SHADOW_DATABASE_URL=postgres://${GRAPHILE_USER}:${GRAPHILE_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${GRAPHILE_DB}_shadow
+
 ```
+
+Em produção, o `.env` é necessario apenas:
+
+```sh
+# Graphile
+GRAPHILE_DB=postgraphile
+GRAPHILE_USER=appuser
+GRAPHILE_PASSWORD=7mF0uXv82qy8
+GRAPHILE_SCHEMA=app_private
+GRAPHILE_ENV=development
+
+# JWT
+JWT_TOKEN_IDENTIFIER=app_public.jwt_token
+JWT_SECRET=Q4hBq9c4h18c
+
+# DB String Connection
+DATABASE_URL=postgres://${GRAPHILE_USER}:${GRAPHILE_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${GRAPHILE_DB}
+```
+
+### DB - Primeiros passos
+
+1 - Criar role com login `app_user` com a senha `123456`;
+2 - Criar os databases: `postgraphile` e `postgraphile_shadow` com o owner `app_user`;
 
 ## CLI
 
 Comandos de apoio a aplicação.
 
-### Postgraphile
+```sh
+ts-node -r tsconfig-paths/register ./src/cli.ts --help
+```
+
+> Instalar o **ts-node**: `npm i -g ts-node`
+
+Ou, após compilado:
 
 ```sh
 node ./dist/cli.js --help
 ```
 
-ou
+## Migrate
 
 ```sh
-ts-node -r tsconfig-paths/register ./src/cli.ts --help
+./node_modules/.bin/graphile-migrate --help
 ```
 
-### DB Migrate
-
-```sh
-node ./node_modules/db-migrate/bin/db-migrate
-```
-
-Foi estabelecido que as migrates serão em SQL para facilitar a execução e a criação:
-
-```sh
-node ./node_modules/db-migrate/bin/db-migrate create primeiraMigration --sql-file
-```
+> Para saber mais: [Graphile-Migrate](https://github.com/graphile/migrate)
 
 ## Anotações
 
+### Bibliotecas
+
+-   [Postgraphile Library](https://www.graphile.org/postgraphile/usage-library/)
+-   [Graphile-Migrate](https://github.com/graphile/migrate)
+
+### Orientações e Dicas
+
 -   [Postgraphile Creating Roles](https://www.graphile.org/postgraphile/required-knowledge/#creating-roles)
 -   [Postgraphile Security](https://www.graphile.org/postgraphile/security/)
--   [DB-Migrate](https://db-migrate.readthedocs.io/)

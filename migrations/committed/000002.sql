@@ -1,11 +1,10 @@
---! Previous: sha1:a9b27cdf43b92e8bdea17cad0aad57a5055873ad
---! Hash: sha1:f09fee2e697746660f8580e88a58d877deeb9f1c
+--! Previous: sha1:7e30247945e701ffa3cbabd1e281f42db817f99d
+--! Hash: sha1:03242f7300bfb9894aa31ca48acaed2fb1e08000
 
 -- undo
-DROP FUNCTION IF EXISTS app_public.authenticate CASCADE;
-DROP TYPE IF EXISTS app_public.jwt_token CASCADE;
 DROP TABLE IF EXISTS app_private.user CASCADE;
 DROP TABLE IF EXISTS app_private.person CASCADE;
+DROP TYPE IF EXISTS app_public.jwt_token CASCADE;
 
 -- redo
 CREATE TABLE app_private.person (
@@ -33,26 +32,3 @@ create type app_public.jwt_token as (
   person_id integer,
   username varchar
 );
-
-create function app_public.authenticate(
-  username text,
-  password text
-) returns app_public.jwt_token as $$
-declare
-  account app_private.user;
-begin
-  select a.* into account
-    from app_private.user as a
-    where a.username = authenticate.username;
-  if account.password = crypt(authenticate.password, account.password) then
-    return (
-      'person_role',
-      extract(epoch from now() + interval '7 days'),
-      account.person_id,
-      account.username
-    )::app_public.jwt_token;
-  else
-    return null;
-  end if;
-end;
-$$ language plpgsql strict security definer;

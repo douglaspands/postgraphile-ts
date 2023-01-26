@@ -1,8 +1,8 @@
 version: '3.7'
 services:
-    postgresql-service:
+    postgres-service:
         image: postgres:15.1-alpine3.17
-        container_name: postgresql-container
+        container_name: postgres-container
         command:
             [
                 'postgres',
@@ -14,7 +14,8 @@ services:
                 'log_duration=on',
             ]
         volumes:
-            - postgresql-volume:/var/lib/postgresql/data
+            - postgres-volume:/var/lib/postgres/data
+            - ./dump_initial.sql:/docker-entrypoint-initdb.d/dump_initial.sql
         environment:
             POSTGRES_HOST_AUTH_METHOD: trust
         ports:
@@ -25,8 +26,8 @@ services:
             - ../../.env
 
 volumes:
-    postgresql-volume:
-        name: postgresql-volume
+    postgres-volume:
+        name: postgres-volume
 
 networks:
     local-network:

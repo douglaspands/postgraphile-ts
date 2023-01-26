@@ -1,7 +1,7 @@
 import { createLogger, format, transports, Logger } from 'winston';
 import config from '@config';
 
-function getLogger(name: string): Logger {
+export const getLogger = (name: string): Logger => {
     return createLogger({
         level: config.LOG_LEVEL,
         format: format.combine(
@@ -15,6 +15,6 @@ function getLogger(name: string): Logger {
         ),
         transports: [new transports.Console()],
     });
-}
+};
 
 export default { getLogger };

@@ -1,5 +1,5 @@
 --! Previous: -
---! Hash: sha1:a9b27cdf43b92e8bdea17cad0aad57a5055873ad
+--! Hash: sha1:7e30247945e701ffa3cbabd1e281f42db817f99d
 
 -- undo
 DROP SCHEMA IF EXISTS app_public CASCADE;
@@ -15,3 +15,4 @@ CREATE SCHEMA IF NOT EXISTS app_hidden;
 CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA app_public;
 CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA app_private;
 CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA app_hidden;
+CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
