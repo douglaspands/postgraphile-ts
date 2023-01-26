@@ -39,7 +39,7 @@ class PostGraphQLOptionsBase {
     appendPlugins = [pgSimplifyInflector, ConnectionFilterPlugin];
     enableQueryBatching = true;
     jwtSecret = config.JWT_SECRET;
-    jwtPgTypeIdentifier = config.JWT_TOKEN_IDENTIFIER;
+    // jwtPgTypeIdentifier = config.JWT_TOKEN_IDENTIFIER;
     pgSettings = pgSettings;
     get legacyRelations(): 'omit' {
         return 'omit';
