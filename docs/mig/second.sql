@@ -1,6 +1,3 @@
---! Previous: sha1:7e30247945e701ffa3cbabd1e281f42db817f99d
---! Hash: sha1:7823f0c7ff384be2c59166d6849baa1f10720a51
-
 -- undo
 DROP TABLE IF EXISTS app_private.user CASCADE;
 DROP TABLE IF EXISTS app_private.person CASCADE;
@@ -21,7 +18,7 @@ CREATE TABLE app_public.user (
   username text NOT NULL unique,
   password text NOT NULL,
   name text NOT NULL,
-  person_id integer NOT NULL REFERENCES app_public.person ON DELETE CASCADE,
+  person_id integer NOT NULL REFERENCES app_private.person ON DELETE CASCADE,
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz NOT NULL DEFAULT now()
 );

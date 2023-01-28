@@ -10,19 +10,11 @@ import jwt from '@core/jwt';
 const logger = logging.getLogger('postGraphQLCore');
 
 async function pgSettings(req: IncomingMessage): Promise<DictType> {
-    try {
-        if (req.headers.authorization) {
-            const token = req.headers.authorization.replace('Bearer ', '');
-            return await jwt.verify(token, config.JWT_SECRET);
-        } else {
-            throw new Error(
-                'Header authentication mau formado. É esperado a sintaxe "Bearer accessToken".'
-            );
-        }
-    } catch (error) {
-        e.status = 401;
-        throw e;
+    if (req.headers.authorization) {
+        const token = req.headers.authorization.replace('Bearer ', '');
+        return jwt.verify(token, config.JWT_SECRET);
     }
+    throw new Error('Token valid is required. "Bearer <token>" syntax is expected.');
 }
 
 async function allowExplain(req: IncomingMessage): Promise<boolean> {
@@ -39,7 +31,7 @@ class PostGraphQLOptionsBase {
     appendPlugins = [pgSimplifyInflector, ConnectionFilterPlugin];
     enableQueryBatching = true;
     jwtSecret = config.JWT_SECRET;
-    // jwtPgTypeIdentifier = config.JWT_TOKEN_IDENTIFIER;
+    jwtPgTypeIdentifier = config.JWT_TOKEN_IDENTIFIER;
     pgSettings = pgSettings;
     get legacyRelations(): 'omit' {
         return 'omit';
