@@ -13,14 +13,6 @@
     },
     "plugins": ["@typescript-eslint", "jest"],
     "rules": {
-        "no-unused-vars": [
-            "error",
-            {
-                "ignoreRestSiblings": true,
-                "destructuredArrayIgnorePattern": "[A-Z]",
-                "caughtErrors": "none"
-            }
-        ],
         "jest/no-disabled-tests": "warn",
         "jest/no-focused-tests": "error",
         "jest/no-identical-title": "error",

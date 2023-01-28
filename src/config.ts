@@ -8,6 +8,10 @@ class Config {
     APP_VERSION = '1.0.0';
     APP_CLI_DESCRIPTION = 'Comandos de apoio a aplicação.';
 
+    // Web Server
+    WEB_HOST = '0.0.0.0';
+    WEB_PORT = parseInt(process.env.PORT || '3000');
+
     // Postgres
     PG_URL = process.env.DATABASE_URL;
     PG_SCHEMA = process.env.GRAPHILE_SCHEMA;

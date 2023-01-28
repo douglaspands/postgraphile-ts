@@ -17,4 +17,8 @@ export const verify = (token: string, secret: string): Promise<JwtPayload> => {
     });
 };
 
-export default { verify };
+export const sign = (payload: JwtPayload, secret: string): string => {
+    return jwt.sign(payload, secret);
+};
+
+export default { verify, sign };
