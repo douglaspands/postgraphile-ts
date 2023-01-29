@@ -1,5 +1,5 @@
-CREATE USER app_user WITH PASSWORD '7mF0uXv82qy8' noinherit;
+CREATE USER app_user WITH PASSWORD '7mF0uXv82qy8' INHERIT;
 CREATE DATABASE postgraphile_shadow WITH OWNER app_user ENCODING UTF8 TABLESPACE pg_default;
 CREATE DATABASE postgraphile WITH OWNER app_user ENCODING UTF8 TABLESPACE pg_default;
-CREATE ROLE user_role;
-GRANT app_user to user_role;
+CREATE ROLE user_role WITH NOINHERIT;
+GRANT user_role to app_user;

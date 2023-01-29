@@ -16,9 +16,9 @@ export default class Token {
             {
                 role: this.role,
                 // exp: this.exp,
-                person_id: this.personId,
-                username: this.username,
-                aud: 'postgraphile',
+                // person_id: this.personId,
+                // username: this.username,
+                // aud: 'postgraphile',
             },
             config.JWT_SECRET,
         );

@@ -14,7 +14,7 @@ async function pgSettings(req: IncomingMessage): Promise<DictType> {
         const token = req.headers.authorization.replace('Bearer ', '');
         const payload = await jwt.verify(token, config.JWT_SECRET);
         logger.debug(`\ntoken='${token}'\ntoken_payload='${JSON.stringify(payload)}'`);
-        return payload;
+        return { role: payload.role };
     }
     throw new Error('Token valid is required. "Bearer <token>" syntax is expected.');
     // return {};
