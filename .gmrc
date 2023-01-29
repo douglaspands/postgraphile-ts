@@ -20,7 +20,8 @@
      * <value>`
      */
     "pgSettings": {
-        "search_path": "app_public,app_private,app_hidden,public"
+        // "search_path": "app_public,app_private,app_hidden,public"
+        "search_path": "app_public"
     },
 
     /*

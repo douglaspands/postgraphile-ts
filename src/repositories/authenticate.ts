@@ -8,7 +8,14 @@ const logger = logging.getLogger('repositories.authenticate');
 
 export default class Authenticate {
     #pool: Connection;
-    #loginSql = `select u.username, u.person_id as "personId", extract(epoch from now() + interval '7 days') as exp, 'user_role' as role from app_public.user as u where u.username = $1::text and u.password = crypt($2::text, u.password);`;
+    #loginSql = `select u.username,
+                        u.person_id as "personId",
+                        extract(epoch from now() + interval '7 days') as exp,
+                       'user_role' as role 
+                 from app_public.user as u
+                 inner join app_public.role as r on r.id = u.role_id
+                 where u.username = $1::text 
+                   and u.password = app_public.crypt($2::text, u.password)`;
     constructor() {
         this.#pool = createConnection(config.PG_SCHEMA);
     }

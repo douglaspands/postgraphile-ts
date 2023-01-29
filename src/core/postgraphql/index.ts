@@ -12,14 +12,17 @@ const logger = logging.getLogger('postGraphQLCore');
 async function pgSettings(req: IncomingMessage): Promise<DictType> {
     if (req.headers.authorization) {
         const token = req.headers.authorization.replace('Bearer ', '');
-        return jwt.verify(token, config.JWT_SECRET);
+        const payload = await jwt.verify(token, config.JWT_SECRET);
+        logger.debug(`\ntoken='${token}'\ntoken_payload='${JSON.stringify(payload)}'`);
+        return payload;
     }
     throw new Error('Token valid is required. "Bearer <token>" syntax is expected.');
+    // return {};
 }
 
-async function allowExplain(req: IncomingMessage): Promise<boolean> {
+// async function allowExplain(req: IncomingMessage): Promise<boolean> {
+async function allowExplain(): Promise<boolean> {
     // TODO: customise condition!
-    logger.debug(req);
     return true;
 }
 

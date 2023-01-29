@@ -2,7 +2,7 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-class Config {
+export class Config {
     // App
     APP_NAME = 'Postgraphile TS';
     APP_VERSION = '1.0.0';

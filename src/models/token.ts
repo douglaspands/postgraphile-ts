@@ -9,11 +9,17 @@ export default class Token {
         public username: string,
     ) {}
     static fromRow(row: { role: string; exp: number; personId: number; username: string }): Token {
-        return new Token(row.role, row.exp, row.personId, row.username);
+        return new Token(row.role, Number(row.exp), row.personId, row.username);
     }
     get accessToken(): string {
         return jwt.sign(
-            { role: this.role, exp: this.exp, person_id: this.personId, username: this.username },
+            {
+                role: this.role,
+                // exp: this.exp,
+                person_id: this.personId,
+                username: this.username,
+                aud: 'postgraphile',
+            },
             config.JWT_SECRET,
         );
     }

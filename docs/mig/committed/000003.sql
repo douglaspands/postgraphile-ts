@@ -1,5 +1,5 @@
---! Previous: sha1:d1e90570e70a7faffe9e76aa3b355a728e989d93
---! Hash: sha1:de43f60e98fd442b0dce2aebf3b7e11a6357eaf7
+--! Previous: sha1:6247ff1297ada82c0fcbf859623f05369176e931
+--! Hash: sha1:86d26c2403e8dd98cfc8de7faca3d39061f6cc6f
 
 -- undo
 delete from app_public.user where username = 'user_admin';
