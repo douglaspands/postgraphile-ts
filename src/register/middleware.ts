@@ -6,6 +6,7 @@ import pg from '@core/pg';
 
 function initApp(app: Express): void {
     app.use(
+        '/graphql/v1',
         postgraphile(
             pg.createConnection(),
             config.PG_SCHEMA,

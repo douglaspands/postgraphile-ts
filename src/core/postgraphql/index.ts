@@ -17,7 +17,6 @@ async function pgSettings(req: IncomingMessage): Promise<DictType> {
         return { role: payload.role };
     }
     throw new Error('Token valid is required. "Bearer <token>" syntax is expected.');
-    // return {};
 }
 
 // async function allowExplain(req: IncomingMessage): Promise<boolean> {
@@ -34,6 +33,7 @@ class PostGraphQLOptionsBase {
     appendPlugins = [pgSimplifyInflector, ConnectionFilterPlugin];
     enableQueryBatching = true;
     jwtSecret = config.JWT_SECRET;
+    jwtVerifyOptions = config.JWT_OPTIONS;
     jwtPgTypeIdentifier = config.JWT_TOKEN_IDENTIFIER;
     pgSettings = pgSettings;
     get legacyRelations(): 'omit' {

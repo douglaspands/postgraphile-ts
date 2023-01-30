@@ -22,7 +22,9 @@
         "postgres:start": "docker compose -f ./docker/postgres/docker-compose.yaml up -d",
         "postgres:stop": "docker compose -f ./docker/postgres/docker-compose.yaml stop",
         "postgres:logs": "docker logs --follow postgres-container",
-        "postgres:rm": "docker compose -f ./docker/postgres/docker-compose.yaml down -v"
+        "postgres:rm": "docker compose -f ./docker/postgres/docker-compose.yaml down -v",
+        "postgres:migrate": "./node_modules/.bin/graphile-migrate migrate",
+        "postgres:commit": "./node_modules/.bin/graphile-migrate commit"
     },
     "repository": {
         "type": "git",

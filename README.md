@@ -19,6 +19,9 @@ Estou desenvolvendo um backend completo e organizado para agilizar novos negocio
 Criar arquivo `.env` com:
 
 ```sh
+# App
+LOG_LEVEL=debug
+
 # PostgreSQL
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=docker
@@ -29,7 +32,7 @@ POSTGRES_PORT=5432
 
 # Graphile
 GRAPHILE_DB=postgraphile
-GRAPHILE_USER=appuser
+GRAPHILE_USER=app_user
 GRAPHILE_PASSWORD=7mF0uXv82qy8
 GRAPHILE_SCHEMA=app_public
 GRAPHILE_ENV=development

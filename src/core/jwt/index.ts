@@ -1,4 +1,4 @@
-import jwt, { JwtPayload } from 'jsonwebtoken';
+import jwt, { JwtPayload, SignOptions } from 'jsonwebtoken';
 
 export const verify = (token: string, secret: string): Promise<JwtPayload> => {
     return new Promise((resolve, reject) => {
@@ -17,8 +17,8 @@ export const verify = (token: string, secret: string): Promise<JwtPayload> => {
     });
 };
 
-export const sign = (payload: JwtPayload, secret: string): string => {
-    return jwt.sign(payload, secret);
+export const sign = (payload: JwtPayload, secret: string, options: SignOptions): string => {
+    return jwt.sign(payload, secret, options);
 };
 
 export default { verify, sign };
