@@ -5,16 +5,19 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "TS: Web Watch",
+            "name": "TS: Web Nodemon",
             "request": "launch",
-            "runtimeArgs": [
-                "run-script",
-                "start:ts"
-            ],
+            "runtimeArgs": ["run-script", "start:ts"],
             "runtimeExecutable": "npm",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
+            "skipFiles": ["<node_internals>/**"],
+            "type": "node",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "JS: Web",
+            "program": "${workspaceFolder}/dist/web.js",
+            "request": "launch",
+            "skipFiles": ["<node_internals>/**"],
             "type": "node",
             "console": "integratedTerminal"
         }

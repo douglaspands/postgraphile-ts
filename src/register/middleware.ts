@@ -1,14 +1,16 @@
 import { Express } from 'express';
 import { postgraphile } from 'postgraphile';
 import config from '@config';
-import postGraphQL from '@app/core/postgraphql';
+import postGraphQL from '@core/postgraphql';
+import pg from '@core/pg';
 
 function initApp(app: Express): void {
     app.use(
+        '/graphql/v1',
         postgraphile(
-            config.DATABASE_URL,
-            config.POSTGRES_SCHEMA,
-            postGraphQL.getOptions(config.POSTGRES_ENV),
+            pg.createConnection(),
+            config.PG_SCHEMA,
+            postGraphQL.getOptions(config.PG_ENV),
         ),
     );
 }

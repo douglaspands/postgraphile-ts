@@ -2,29 +2,29 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-class Config {
-    // Postgres
-    POSTGRES_USER = process.env.POSTGRES_USER;
-    POSTGRES_PASSWORD = process.env.POSTGRES_PASSWORD;
-    POSTGRES_DB = process.env.POSTGRES_DB;
-    POSTGRES_HOST = process.env.POSTGRES_HOST;
-    POSTGRES_SCHEMA = process.env.POSTGRES_SCHEMA;
-    POSTGRES_PORT = process.env.POSTGRES_PORT;
-    POSTGRES_ENV = process.env.POSTGRES_ENV || 'production';
-
-    // Logger
-    LOG_LEVEL = (process.env.LOG_LEVEL || 'INFO').toLocaleLowerCase();
-
+export class Config {
     // App
     APP_NAME = 'Postgraphile TS';
     APP_VERSION = '1.0.0';
     APP_CLI_DESCRIPTION = 'Comandos de apoio a aplicação.';
 
-    // Propriedades
-    // URL de conexão do Postgres
-    get DATABASE_URL(): string {
-        return `postgres://${this.POSTGRES_USER}:${this.POSTGRES_PASSWORD}@${this.POSTGRES_HOST}:${this.POSTGRES_PORT}/${this.POSTGRES_DB}`;
-    }
+    // Web Server
+    WEB_HOST = '0.0.0.0';
+    WEB_PORT = parseInt(process.env.PORT || '3000');
+
+    // Postgres
+    PG_URL = process.env.DATABASE_URL;
+    PG_SCHEMA = process.env.GRAPHILE_SCHEMA;
+    PG_ENV = process.env.GRAPHILE_ENV || 'production';
+    PG_ROOT_URL = process.env.ROOT_DATABASE_URL || '';
+
+    // JWT
+    JWT_TOKEN_IDENTIFIER = process.env.JWT_TOKEN_IDENTIFIER || '';
+    JWT_SECRET = process.env.JWT_SECRET || '';
+    JWT_OPTIONS = { algorithm: ((): 'HS256' => 'HS256')(), audience: 'postgraphile' };
+
+    // Logger
+    LOG_LEVEL = (process.env.LOG_LEVEL || 'INFO').toLocaleLowerCase();
 }
 
 export default new Config();

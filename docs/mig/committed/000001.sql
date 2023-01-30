@@ -1,0 +1,10 @@
+--! Previous: -
+--! Hash: sha1:aa18b616b927077d2f48c69f790f1633d9ce4dde
+
+-- undo
+DROP EXTENSION IF EXISTS pgcrypto CASCADE;
+DROP SCHEMA IF EXISTS app_public CASCADE;
+
+-- redo
+CREATE SCHEMA IF NOT EXISTS app_public;
+CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA app_public;

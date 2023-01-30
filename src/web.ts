@@ -1,12 +1,17 @@
+import http from 'http';
 import { Express } from 'express';
-import web from '@app/core/web';
+import web from '@core/web';
+import logging from '@core/logging';
+import config from '@config';
 
-export default new Promise<Express>((resolve, reject) => {
-    web.createApp()
-        .then((app: Express) => {
-            resolve(app);
-        })
-        .catch((error) => {
-            reject(error);
+const logger = logging.getLogger('web');
+
+web.createApp()
+    .then((app: Express) => {
+        http.createServer(app).listen(config.WEB_PORT, config.WEB_HOST, () => {
+            logger.info(`App listening on port ${config.WEB_PORT}`);
         });
-});
+    })
+    .catch((error) => {
+        logger.error(error);
+    });

@@ -1,6 +1,6 @@
 import { Router, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import logging from '@app/core/logging';
+import logging from '@core/logging';
 
 const logger = logging.getLogger('healthcheckController');
 const router = Router();
