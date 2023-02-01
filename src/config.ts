@@ -21,7 +21,7 @@ export class Config {
     // JWT
     JWT_TOKEN_IDENTIFIER = process.env.JWT_TOKEN_IDENTIFIER || '';
     JWT_SECRET = process.env.JWT_SECRET || '';
-    JWT_OPTIONS = { algorithm: ((): 'HS256' => 'HS256')(), audience: 'postgraphile' };
+    JWT_OPTIONS = { algorithm: 'HS256' as const, audience: 'postgraphile' };
 
     // Logger
     LOG_LEVEL = (process.env.LOG_LEVEL || 'INFO').toLocaleLowerCase();

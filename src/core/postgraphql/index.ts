@@ -36,9 +36,7 @@ class PostGraphQLOptionsBase {
     jwtVerifyOptions = config.JWT_OPTIONS;
     jwtPgTypeIdentifier = config.JWT_TOKEN_IDENTIFIER;
     pgSettings = pgSettings;
-    get legacyRelations(): 'omit' {
-        return 'omit';
-    }
+    legacyRelations = 'omit' as const;
 }
 
 class PostGraphQLOptionsDevelopment extends PostGraphQLOptionsBase {
@@ -49,9 +47,7 @@ class PostGraphQLOptionsDevelopment extends PostGraphQLOptionsBase {
     enhanceGraphiql = true;
     ownerConnectionString = config.PG_ROOT_URL;
     allowExplain = allowExplain;
-    get showErrorStack(): 'json' {
-        return 'json';
-    }
+    showErrorStack = 'json' as const;
 }
 
 class PostGraphQLOptionsProduction extends PostGraphQLOptionsBase {
