@@ -13,7 +13,7 @@
         "start:ts": "cross-env DEBUG='graphile-build-pg' nodemon ./src/web.ts",
         "start:js": "cross-env DEBUG='graphile-build-pg' node ./dist/web.js",
         "start": "run-s start:ts",
-        "test": "jest",
+        "test": "jest --runInBand --detectOpenHandles --forceExit",
         "tsc": "tsc --project ./tsconfig-build.json",
         "tsc:alias": "tsc-alias --project ./tsconfig-build.json",
         "tsc:alias:watch": "tsc-alias --project ./tsconfig-build.json --watch",

@@ -8,9 +8,9 @@ export default {
     coverageDirectory: 'coverage',
     coverageProvider: 'v8',
     coverageReporters: ['json', 'html', 'text'],
-    moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
-    preset: 'ts-jest',
     roots: ['<rootDir>/tests'],
     modulePaths: [compilerOptions.baseUrl],
+    moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/src/' }),
+    preset: 'ts-jest',
     verbose: true,
 };
