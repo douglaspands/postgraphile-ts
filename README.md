@@ -76,6 +76,14 @@ DATABASE_URL=postgres://${GRAPHILE_USER}:${GRAPHILE_PASSWORD}@${POSTGRES_HOST}:$
 1 - Criar role com login `app_user` com a senha `123456`;
 2 - Criar os databases: `postgraphile` e `postgraphile_shadow` com o owner `app_user`;
 
+## Migrate
+
+```sh
+./node_modules/.bin/graphile-migrate migrate
+```
+
+> Para saber mais: [Graphile-Migrate](https://github.com/graphile/migrate)
+
 ## CLI
 
 Comandos de apoio a aplicação.
@@ -91,14 +99,6 @@ Ou, após compilado:
 ```sh
 node ./dist/cli.js --help
 ```
-
-## Migrate
-
-```sh
-./node_modules/.bin/graphile-migrate --help
-```
-
-> Para saber mais: [Graphile-Migrate](https://github.com/graphile/migrate)
 
 ## Anotações
 
