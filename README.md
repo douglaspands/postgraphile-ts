@@ -53,29 +53,6 @@ JWT_TOKEN_IDENTIFIER=app_public.jwt_token
 JWT_SECRET=Q4hBq9c4h18c
 ```
 
-Em produção, o `.env` é necessario apenas:
-
-```sh
-# Graphile
-GRAPHILE_DB=postgraphile
-GRAPHILE_USER=appuser
-GRAPHILE_PASSWORD=7mF0uXv82qy8
-GRAPHILE_SCHEMA=app_private
-GRAPHILE_ENV=development
-
-# JWT
-JWT_TOKEN_IDENTIFIER=app_public.jwt_token
-JWT_SECRET=Q4hBq9c4h18c
-
-# DB String Connection
-DATABASE_URL=postgres://${GRAPHILE_USER}:${GRAPHILE_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${GRAPHILE_DB}
-```
-
-### DB - Primeiros passos
-
-1 - Criar role com login `app_user` com a senha `123456`;
-2 - Criar os databases: `postgraphile` e `postgraphile_shadow` com o owner `app_user`;
-
 ## Migrate
 
 ```sh
