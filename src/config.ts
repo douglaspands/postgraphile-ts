@@ -13,10 +13,10 @@ export class Config {
     WEB_PORT = parseInt(process.env.PORT || '3000');
 
     // Postgres
-    PG_URL = process.env.DATABASE_URL;
+    PG_URL = process.env.GRAPHILE_DATABASE_URL;
+    PG_ROOT_URL = process.env.ROOT_DATABASE_URL;
     PG_SCHEMA = process.env.GRAPHILE_SCHEMA;
     PG_ENV = process.env.GRAPHILE_ENV || 'production';
-    PG_ROOT_URL = process.env.ROOT_DATABASE_URL || '';
 
     // JWT
     JWT_TOKEN_IDENTIFIER = process.env.JWT_TOKEN_IDENTIFIER || '';
