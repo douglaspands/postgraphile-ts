@@ -20,7 +20,7 @@
      * <value>`
      */
     "pgSettings": {
-        // "search_path": "app_public,app_private,app_hidden,public"
+        // "search_path": "app_public,app_private,app_hidden,public",
         "search_path": "app_public"
     },
 
@@ -65,7 +65,7 @@
      * afterReset: actions executed after a `graphile-migrate reset` command.
      */
     "afterReset": [
-        // "!setup_initial.sql"
+        // "afterReset.sql",
         // { "_": "command", "command": "graphile-worker --schema-only" },
     ],
 

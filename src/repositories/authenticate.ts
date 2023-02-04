@@ -11,7 +11,7 @@ export default class Authenticate {
     #loginSql = `select u.username,
                         u.person_id as "personId",
                         extract(epoch from now() + interval '7 days') as exp,
-                       'user_role' as role 
+                        r.name as role 
                  from app_public.user as u
                  inner join app_public.role as r on r.id = u.role_id
                  where u.username = $1::text 
